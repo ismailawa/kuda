@@ -29,67 +29,67 @@ app.post('/api/users', (req, res, next) => {
   });
 });
 
-// app.get('/api/users', (req, res, next) => {
-//   res.status(200).json({
-//     success: true,
-//     message: 'fetching users was successful',
-//     data: fakeDatabase,
-//   });
-// });
+app.get('/api/users', (req, res, next) => {
+  res.status(200).json({
+    success: true,
+    message: 'fetching users was successful',
+    data: fakeDatabase,
+  });
+});
 
-// app.get('/api/users/:id', (req, res, next) => {
-//   let user;
-//   const id = req.params.id;
-//   const foundUser = fakeDatabase.filter((user) => user.id === Number(id));
+app.get('/api/users/:id', (req, res, next) => {
+  let user;
+  const id = req.params.id;
+  const foundUser = fakeDatabase.filter((user) => user.id === Number(id));
 
-//   if (foundUser.length > 0) {
-//     user = foundUser[0];
-//   }
-//   res.status(200).json({
-//     success: true,
-//     message: 'fetching user was successful',
-//     data: user,
-//   });
-// });
+  if (foundUser.length > 0) {
+    user = foundUser[0];
+  }
+  res.status(200).json({
+    success: true,
+    message: 'fetching user was successful',
+    data: user,
+  });
+});
 
-// app.put('/api/users/:id', (req, res, next) => {
-//   let user;
-//   const id = req.params.id;
-//   const foundUser = fakeDatabase.filter((user) => user.id === Number(id));
+app.put('/api/users/:id', (req, res, next) => {
+  let user;
+  const id = req.params.id;
+  const foundUser = fakeDatabase.filter((user) => user.id === Number(id));
 
-//   if (foundUser.length > 0) {
-//     user = foundUser[0];
-//     const index = fakeDatabase.indexOf(user);
-//     if (index !== -1) {
-//       fakeDatabase[index] = { ...user, ...req.body };
-//       user = fakeDatabase[index];
-//     }
-//   }
-//   res.status(200).json({
-//     success: true,
-//     message: 'User update was successful',
-//     data: user,
-//   });
-// });
+  if (foundUser.length > 0) {
+    user = foundUser[0];
+    const index = fakeDatabase.indexOf(user);
+    if (index !== -1) {
+      fakeDatabase[index] = { ...user, ...req.body };
+      user = fakeDatabase[index];
+    }
+  }
+  res.status(200).json({
+    success: true,
+    message: 'User update was successful',
+    data: user,
+  });
+});
 
-// app.delete('/api/users/:id', (req, res, next) => {
-//   let user;
-//   const id = req.params.id;
-//   const foundUser = fakeDatabase.filter((user) => user.id === Number(id));
+app.delete('/api/users/:id', (req, res, next) => {
+  let user;
+  const id = req.params.id;
+  const foundUser = fakeDatabase.filter((user) => user.id === Number(id));
 
-//   if (foundUser.length > 0) {
-//     user = foundUser[0];
-//     const index = fakeDatabase.indexOf(user);
-//     if (index !== -1) {
-//       fakeDatabase = fakeDatabase.filter((user) => user.id !== Number(id));
-//     }
-//   }
-//   res.status(200).json({
-//     success: true,
-//     message: 'delete was successful',
-//     data: user,
-//   });
-// });
+  if (foundUser.length > 0) {
+    user = foundUser[0];
+    const index = fakeDatabase.indexOf(user);
+    if (index !== -1) {
+      fakeDatabase = fakeDatabase.filter((user) => user.id !== Number(id));
+    }
+  }
+  res.status(200).json({
+    success: true,
+    message: 'delete was successful',
+    data: user,
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
