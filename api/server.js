@@ -2,12 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 
+const User = require('./models/user');
+
 const PORT = 5001;
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+const user = new User();
+user.find();
 
 const connection = mysql.createConnection({
   host: 'localhost',
